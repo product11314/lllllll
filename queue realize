@@ -1,0 +1,54 @@
+package com.example;
+class QUEUE{
+    public int[] queue;
+    public int l,r;
+    
+    public void generator(int n ){
+        queue = new int[n];
+        l = 0;
+        r = 0;
+    }
+
+    public void push(int val){
+        if(isfull()){
+            resize();
+        }else{
+            queue[r++] = val;
+        }
+    }
+
+    public int extract(){
+        return queue[l++];
+    }
+
+    public boolean isempty(){
+        return l == r;
+    }
+
+    public boolean isfull(){
+        return r == queue.length;
+    }
+
+    private void resize(){
+        int newrange = queue.length + (queue.length>>1);
+        int[] newqueue = new int[newrange];
+        System.arraycopy(queue, 0, newrange, 0, queue.length);
+        queue = newqueue;
+    }
+
+    class circularqueue{
+        public int l,r;
+        public int size,limit;
+        public void mycircularqueue(int k){
+            queue = new int[k];
+			l = r = size = 0;
+			limit = k;
+        }
+
+        public void push(int val){
+            if(isfull()){
+                return;
+            }
+        }
+    }
+}
