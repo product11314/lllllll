@@ -36,19 +36,43 @@ class QUEUE{
         queue = newqueue;
     }
 
-    class circularqueue{
-        public int l,r;
+    class Mycircularqueue{
+        public int[] queue;
+		public int l,r;
         public int size,limit;
-        public void mycircularqueue(int k){
+        public void Mycircularqueue(int k){
             queue = new int[k];
 			l = r = size = 0;
 			limit = k;
         }
 
-        public void push(int val){
+       public boolean push(int val){
             if(isfull()){
-                return;
+                return false;
+            }else{
+                queue[r] = val;
+                r = r == limit-1 ? 0 : r+1;
+                size ++;
+                return true;
             }
+        }
+        
+        public boolean poll(){
+            if(isempty()){
+                return false;
+            }else{
+                l = l == limit-1 ? 0 : l+1;
+                size --;
+                return true;
+            }
+        }
+
+        public boolean isfull(){
+            return size == limit;
+        }
+
+        public boolean isempty(){
+            return size == 0;
         }
     }
 }
